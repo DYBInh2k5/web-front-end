@@ -1,0 +1,60 @@
+/* Reset cơ bản */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Header */
+header {
+  background: #6699b3;
+  color: #000;
+  padding: 15px;
+}
+
+header h1 {
+  margin:0cqb;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Container layout: sidebar + content */
+.container {
+  display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+  background: #8497a3;
+  width: 150px;
+  padding: 15px;
+}
+
+.sidebar a {
+  display: block;
+  margin-bottom: 8px;
+  color: #004080;
+  text-decoration: none;
+}
+
+.sidebar a:hover {
+  text-decoration: underline;
+}
+
+/* Content */
+.content {
+  flex: 1;
+  background: #f2f2f2;
+  padding: 20px;
+}
+
+.content h2 {
+  margin-top: 0;
+}
+
+/* Footer */
+footer {
+  background: #6699b3;
+  text-align: center;
+  padding: 10px;
+  font-size: 14px;
+}

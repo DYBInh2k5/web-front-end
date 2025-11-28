@@ -1,0 +1,86 @@
+Install AngularFire and Firebase: 
+	npm install @angular/fire firebase --save //npm install firebase @angular/fire
+
+ 
+ - Tạo project trên firebase tại link https://console.firebase.google.com/u/0/ với tài khoản google
+ - Trên màn hình chính Project Overview click Add firebase to your web app.
+ - Sau đó đặt tên app và bỏ qua các bước còn lại rồi hoàn tất. Sau khi hoàn tất trên trang chủ firebase sẽ có thông tin app vừa tạo,
+ click vào setting để xem thông tin Config của App để cấu hình bên project Angular
+ 
+ - Tạo file environment.ts bằng lệnh: ng generate environments
+ 
+ - Copy thông tin xác thực này vào 2 file environment.ts và environment.production.ts được đặt trong thư mục src/environments .
+	export const environment = {
+	  production: false,
+	  firebase: {
+		apiKey: YOUR_API_KEY,
+		authDomain: YOUR_AUTH_DOMAIN,
+		databaseURL: YOUR_DATABASE_URL,
+		projectId: YOUR_PROJECT_ID,
+		storageBucket: "",
+		messagingSenderId: YOUR_MESSAGING_SENDER_ID
+	  }
+	};
+ - Cài đặt module cho Firebase
+	Open your AppConfig located in /src/app/app.config.ts and inject the Firebase providers for Firestore and specify your Firebase configuration.
+		import { environment } from "../environments/environment";
+		import { provideFirebaseApp,initializeApp } from "@angular/fire/app";
+		import { getAuth, provideAuth } from "@angular/fire/auth";
+		import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+		import { getDatabase, provideDatabase } from '@angular/fire/database';
+		import { getStorage, provideStorage } from '@angular/fire/storage';
+
+	
+	Sau đó thêm vào đoạn code bên dưới tạikhai báo imports:
+		export const appConfig: ApplicationConfig = {
+		  providers: [
+			provideRouter(routes),
+			...
+			
+			provideFirebaseApp(() => initializeApp(environment.firebase)),
+			provideAuth(() => getAuth()),
+			provideFirestore(() => getFirestore()),
+			provideDatabase(() => getDatabase()),
+			provideStorage(() => getStorage()),		
+		  ]
+		};
+
+ - Tạo Database trên firestore
+ - Kết nối với firebase ()
+		
+		import { Component, Injectable, inject } from '@angular/core';
+		import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+		import { Observable } from 'rxjs';
+		import { CommonModule } from '@angular/common';
+
+		export interface Item { id: string; name: string; }
+
+			
+		@Component({
+		  selector: 'app-home',
+		//  standalone: true,
+		  imports: [CommonModule,AsyncPipe ],
+		  styleUrl: './home.component.css',
+		  template: `
+					<ul>
+					  <li *ngFor="let item of items | async">
+						{{ item.name }}
+					  </li>
+					</ul>
+				  `
+		})
+})
+		
+		export class HomeComponent {
+		  title = 'app4';
+		  firestore: Firestore = inject(Firestore)
+		  items: Observable<any[]>;
+
+		  constructor() {
+			const aCollection = collection(this.firestore, 'items')
+			this.items = collectionData(aCollection);
+		  }
+		}
+
+	======================	
+	

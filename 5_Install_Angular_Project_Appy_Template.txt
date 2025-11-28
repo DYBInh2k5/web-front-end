@@ -1,0 +1,59 @@
+****Trường hợp máy chưa cài sẵn angular cli trước đó****
+
+- Install NodeJS
+		Check version Node:  node –v
+		===========================================================
+- we will create an empty directory wherein, we will run the Angular CLI command.
+		npm install -g @angular/cli // -g là yêu cầu cài đặt toàn cục
+		npm install -g @angular/cli@latest // cai dat voi version mới nhất
+	command to install angular project
+		 ng new Angular-app // name of the project	
+		 builds the application and starts the web server.
+			cd Angular-app
+			ng serve 
+	========================================================
+**** Trường hợp đã cài Angular CLI trước đó và muốn cài đặt lại CLI với phiên bản mới nhất ****
+
+- Lưu ý: Nếu đã cài đặt angular cli ở local thì phải uninstall trước khi install lại, 
+		 thực hiện uninstall cli cục bộ tại thư mục đã cài đặt bằng lệnh:
+	
+	npm uninstall @angular/cli //tại thư mục đã cài cli cục bộ
+	
+	-------------------------------------
+- Install latest angular:
+	npm uninstall -g @angular/cli
+	npm cache clean --force 
+	
+	Notes : - Using --force for clean all the caches - On Windows run this using administrator - On Mac use sudo ($ sudo <command>)
+	Using following commands to uninstall :
+
+	To verify: ng --version /* You will get the error message, then you have uninstalled */
+	
+	Using following commands to re-install :
+	npm install -g @angular/cli@latest
+		
+	======================================================
+**** Gắn giao diện cho project *****
+
+- Install Bootstrap:
+	+ npm install bootstrap --save
+- Gắn giao diện vào angular project	
+	+ Vì đã install bootstrap rồi nên không cần liên kết đến thư viện bootstrap nữa
+	+ Root project tính từ thư mục Src
+	+ Copy toàn bộ nội dung file giao diện vào file index.html
+	+ Copy toàn bộ thư mục JS và hình, css vào thư mục asset
+	+ Sửa đường dẫn các file JS và css
+	+ copy nội dung trong thẻ body (không bao gồm các liên kết css và JS) sang file app.component.html, sau đó đặt thẻ   <app-root></app-root> thay vào vị trí đó
+	+ Lưu ý vẫn giữ lại dòng <base href="/"> trong file index.html --> nếu không có dòng này thì 
+		giao diện không gắn được phần <app-root> vào file index.html được
+		Nếu <base href="/"> thay đổi thành <base href="/web/"> thì tất cả đường dẫn resource sẽ tự động thêm vào "web/"
+		vD: localhost:4200/asset/... --> localhost:4200/web/asset/....
+	+ <router-oulet></router-oulet> là phần thay thế component tương ứng với routing path 
+=============================================================
+BUG: 
+ng : File C:\Users\Kim Ngon\AppData\Roaming\npm\ng.ps1 cannot be loaded because running scripts is disabled on this system.    
+For more information, see about_Execution_Policies at https:/go.microsoft.com/fwlink/?LinkID=135170.
+==> FIX:
+	- Xóa file ng.ps1 ở thư mục C:\Users\Kim Ngon\AppData\Roaming\npm\ng.ps1
+	- Xóa tất cả file trong thư mục C:\Users\Kim Ngon\AppData\Roaming\npm-cache
+	- Chạy lại lệnh ng serve trong terminal

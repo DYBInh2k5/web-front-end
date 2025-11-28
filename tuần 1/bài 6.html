@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Form</title>
+  <link rel="stylesheet" href="bài 6.css">
+</head>
+<body>
+
+  <form class="contact-form">
+    <!-- Full Name -->
+    <label>Full Name <span class="required">*</span></label>
+    <div class="name-group">
+      <input type="text" placeholder="First" required>
+      <input type="text" placeholder="Last" required>
+    </div>
+
+    <!-- Email -->
+    <label>Email <span class="required">*</span></label>
+    <input type="email" required>
+
+    <!-- Subject -->
+    <label>Subject</label>
+    <select>
+      <option>Advertise</option>
+      <option>Feedback</option>
+      <option>Support</option>
+      <option>Other</option>
+    </select>
+
+    <!-- Message -->
+    <label>Your Message <span class="required">*</span></label>
+    <textarea required></textarea>
+
+    <!-- Submit Button -->
+    <button type="submit">Submit</button>
+  </form>
+
+</body>
+</html>

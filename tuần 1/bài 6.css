@@ -1,0 +1,57 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 40px;
+}
+
+.contact-form {
+  border: 1px solid #4da6ff;
+  padding: 20px;
+  width: 350px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.required {
+  color: red;
+}
+
+.name-group {
+  display: flex;
+  gap: 10px;
+}
+
+.name-group input {
+  flex: 1;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+button {
+  margin-top: 15px;
+  background-color: #4da6ff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3399ff;
+}

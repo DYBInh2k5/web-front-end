@@ -1,0 +1,52 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+.header {
+    background-color: #5b96af;
+    color: white;
+    padding: 15px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Layout chính */
+.container {
+    display: flex;
+}
+
+/* Sidebar bên trái */
+.sidebar {
+    background-color: #c6dbe6;
+    width: 200px;
+    padding: 15px;
+}
+
+.sidebar a {
+    display: block;
+    text-decoration: none;
+    color: #2a5d78;
+    margin-bottom: 10px;
+}
+
+/* Nội dung chính */
+.content {
+    flex: 1;
+    background-color: #f5f5f5;
+    padding: 20px;
+}
+
+.content h2 {
+    margin-top: 0;
+}
+
+/* Footer */
+.footer {
+    background-color: #5b96af;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}

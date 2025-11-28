@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Order Form</title>
+</head>
+<body>
+
+  <form action="#" method="post">
+    <p>
+      Title
+      <input type="text" name="title" value="Mister">
+    </p>
+
+    <p>
+      Name
+      <input type="text" name="name" required>
+      (required)
+    </p>
+
+    <p>
+      Phone number
+      <input type="tel" name="phone">
+      (optional)
+    </p>
+
+    <p>
+      Email address
+      <input type="email" name="email" required>
+      (required)
+    </p>
+
+    <p>
+      Your website
+      <input type="url" name="website" placeholder="www.yoursite.com">
+      (optional)
+    </p>
+
+    <p>
+      Nr. of items to order
+      <input type="number" name="items" min="1" max="10" value="1"> (1–10)
+    </p>
+
+    <p>
+      Length
+      <input type="number" name="length" min="1" max="100" step="10" value="1"> m (in 10cm increments)
+    </p>
+
+    <p>
+      Delivery date
+      <input type="date" name="deliverydate" min="2010-12-16" required>
+      (minimum 16 December 2010)
+    </p>
+
+    <p>
+      Time of delivery
+      <input type="time" name="deliverytime" step="1800"> (in 30 min increments)
+    </p>
+
+    <p>
+      Color of the item
+      <input type="color" name="color" value="#ed1c24"> (default red)
+    </p>
+
+    <p>
+      <input type="submit" value="Submit Query">
+    </p>
+  </form>
+
+  <!-- Search box -->
+  <form action="#" method="get">
+    Search <input type="search" name="q">
+    <input type="submit" value="Go">
+  </form>
+
+</body>
+</html>

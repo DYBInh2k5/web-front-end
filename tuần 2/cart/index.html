@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <title>Thêm sản phẩm vào giỏ (SessionStorage)</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="cart.js" defer></script>
+</head>
+<body>
+  <h1>Thêm sản phẩm vào giỏ hàng (SessionStorage)</h1>
+
+  <table class="form-table">
+    <tr>
+      <td>Mã sản phẩm</td>
+      <td><input type="text" id="productId" placeholder="VD: 1"></td>
+    </tr>
+    <tr>
+      <td>Tên sản phẩm</td>
+      <td><input type="text" id="productName" placeholder="VD: Loa"></td>
+    </tr>
+    <tr>
+      <td>Số lượng</td>
+      <td><input type="number" id="productQty" min="1" value="1"></td>
+    </tr>
+    <tr>
+      <td>Giá</td>
+      <td><input type="number" id="productPrice" min="0" step="0.01" value="0"></td>
+    </tr>
+    <tr>
+      <td colspan="2" style="text-align:center;">
+        <button id="addBtn">Thêm giỏ hàng</button>
+        <button id="clearBtn" class="danger">Xóa toàn bộ</button>
+      </td>
+    </tr>
+  </table>
+
+  <section class="summary">
+    <p><strong>Tổng sản phẩm:</strong> <span id="totalItems">0</span></p>
+    <p><strong>Tổng tiền:</strong> <span id="totalPrice">0</span></p>
+  </section>
+
+  <section id="cartArea">
+    <h2>Giỏ hàng</h2>
+    <table id="cartTable" class="cart-table">
+      <thead>
+        <tr><th>Mã</th><th>Tên</th><th>Số lượng</th><th>Giá</th><th>Thành tiền</th><th></th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <p class="note">Gợi ý: mở DevTools → Application → Session Storage để xem dữ liệu `cart` được lưu.</p>
+</body>
+</html>

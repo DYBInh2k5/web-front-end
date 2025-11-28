@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Bài 1 - Contact Form</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main>
+    
+
+    <section class="exercise">
+
+      <form class="contact-form" id="contactForm" novalidate>
+        <!-- Full name: two fields side by side -->
+                <div class="form-row name-row">
+        <div class="form-group">
+            <label>Full Name <span class="required">*</span></label>
+            <input id="first" name="first" type="text" placeholder="First" required>
+        </div>
+        <div class="form-group">
+            <label>Last Name <span class="sr-only">*</span></label>
+            <input id="last" name="last" type="text" placeholder="Last" required>
+        </div>
+        </div>
+
+
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">Email <span class="required">*</span></label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required>
+        </div>
+
+        <!-- Subject -->
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <select id="subject" name="subject">
+            <option>Advertise</option>
+            <option>Feedback</option>
+            <option>Support</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <!-- Message -->
+        <div class="form-group">
+          <label for="message">Your Message <span class="required">*</span></label>
+          <textarea id="message" name="message" rows="6" required></textarea>
+        </div>
+
+        <button type="submit" class="btn">Submit</button>
+      </form>
+
+    </section>
+  </main>
+
+  <!-- Tiny JS để demo valid + highlight (không gửi form thật) -->
+  <script>
+    const form = document.getElementById('contactForm');
+
+    form.addEventListener('submit', function(e) {
+      // prevent native submit UI, we'll handle simple validation
+      e.preventDefault();
+      // remove previous invalid hints
+      form.querySelectorAll('.invalid').forEach(n => n.classList.remove('invalid'));
+
+      // check validity
+      if (!form.checkValidity()) {
+        // mark invalid fields
+        form.querySelectorAll('input:invalid, textarea:invalid, select:invalid').forEach(el => {
+          el.classList.add('invalid');
+        });
+        alert('Vui lòng điền đầy đủ và đúng định dạng các trường bắt buộc.');
+        // focus first invalid
+        const firstInvalid = form.querySelector('input:invalid, textarea:invalid, select:invalid');
+        if (firstInvalid) firstInvalid.focus();
+        return;
+      }
+
+      // Demo: giả lập gửi thành công
+      alert('Ok rồi đó KUUUUUUUUUUUUUUUUUUUUUUUUUUU');
+      // nếu muốn gửi thật, gọi form.submit() hoặc fetch() ở đây
+    });
+
+    // Xoá highlight khi user sửa
+    form.querySelectorAll('input, textarea, select').forEach(el => {
+      el.addEventListener('input', () => el.classList.remove('invalid'));
+    });
+  </script>
+</body>
+</html>

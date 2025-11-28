@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Demo Web Worker Add Numbers</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    input { margin: 5px; padding: 5px; }
+    button { margin: 5px; padding: 6px 12px; cursor: pointer; }
+    #result { margin-top: 15px; font-weight: bold; color: blue; }
+  </style>
+</head>
+<body>
+  <h2>Web Worker Demo - Add Numbers</h2>
+  <label>number 1: <input type="number" id="num1" value="0"></label><br>
+  <label>number 2: <input type="number" id="num2" value="0"></label><br>
+  <button onclick="startWorker()">Add</button>
+  <button onclick="stopWorker()">Stop Worker</button>
+
+  <div id="result">Kết quả sẽ hiển thị ở đây...</div>
+
+  <script>
+    let w; // biến lưu worker
+
+    function startWorker() {
+      const n1 = document.getElementById("num1").value;
+      const n2 = document.getElementById("num2").value;
+
+      if(typeof(Worker) !== "undefined") {
+        if(!w) { // nếu chưa có worker thì tạo
+          w = new Worker("worker.js");
+        }
+        // gửi dữ liệu vào worker
+        w.postMessage({num1: n1, num2: n2});
+        // nhận dữ liệu từ worker
+        w.onmessage = function(event) {
+          document.getElementById("result").innerHTML = "Kết quả: " + event.data;
+        };
+      } else {
+        document.getElementById("result").innerHTML = "Trình duyệt không hỗ trợ Web Workers...";
+      }
+    }
+
+    function stopWorker() {
+      if(w) {
+        w.terminate(); // dừng worker
+        w = undefined;
+        document.getElementById("result").innerHTML = "Worker đã dừng.";
+      }
+    }
+  </script>
+</body>
+</html>
